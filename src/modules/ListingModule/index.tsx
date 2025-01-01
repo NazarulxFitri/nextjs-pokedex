@@ -8,7 +8,7 @@ import GoToTop from "./GoToTop";
 import Link from "next/link";
 
 const ListingModule = () => {
-    const { data, loading } = useGetAllPokemon(386);
+    const { data, loading } = useGetAllPokemon(500);
     const [filteredPokemon, setFilteredPokemon] = useState<AllPokemonConfig[]>();
     const [showFilter, setShowFilter] = useState(false);
     const [nameInput, setNameInput] = useState('');
@@ -28,7 +28,7 @@ const ListingModule = () => {
 
     if (loading) return (
         <Container>
-            <Skeleton />
+            <Skeleton forListing={true} forDetail={false} />
         </Container>
     )
 
@@ -41,7 +41,7 @@ const ListingModule = () => {
                         <Link href={`/pokemon/${pokemon.id}`}>
                             <Image src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} width={160} height={160} />
                             <Box>
-                                <Typography variant="subtitle1" sx={{ "&::first-letter": { textTransform: "uppercase" } }}>{pokemon?.name}</Typography>
+                                <Typography variant="subtitle1" sx={{ "&::first-letter": { textTransform: "uppercase" }, fontSize: "14px", color: "#666" }}>{pokemon?.name}</Typography>
                                 <Box gap={1} display={"flex"} justifyContent={"center"}>
                                     {pokemon?.types?.map((item, idx) => (
                                         <Box key={idx}>

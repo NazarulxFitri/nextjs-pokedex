@@ -15,9 +15,9 @@ const Filter: React.FC<FilterProps> = ({ typeInput, showFilter, setShowFilter, s
     return (
         <Box sx={{
             background: "#FFF",
-            borderRadius: "12px",
+            borderRadius: "4px",
             bottom: showFilter ? "0" : "-370px",
-            boxShadow: "1px 1px 10px #E6E6E6",
+            boxShadow: "1px 1px 10px #eeeeee",
             p: 2,
             position: "fixed",
             textAlign: "center",

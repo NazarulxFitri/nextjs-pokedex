@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export interface PokemonConfig {
   name: string;
   id: number;
-  height: number;
+  height?: number;
   weight: number;
   sprites: {
     back_default: string;
@@ -17,7 +17,7 @@ export interface PokemonConfig {
       home: {
         front_default: string;
       };
-      'official-artwork': {
+      "official-artwork": {
         front_default: string;
       };
       showdown: {
@@ -40,8 +40,14 @@ export interface PokemonConfig {
     effort: number;
     stat: {
       name: string;
-    }
-  }[]
+    };
+  }[];
+  abilities: {
+    ability: {
+      name: string;
+      url: string;
+    };
+  }[];
 }
 
 const useGetPokemon = (id: string) => {

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { allPokemonState } from "./state/allPokemon";
 
 export interface AllPokemonConfig {
   name: string;
@@ -15,7 +17,7 @@ export interface AllPokemonConfig {
       home: {
         front_default: string;
       };
-      'official-artwork': {
+      "official-artwork": {
         front_default: string;
       };
       showdown: {
@@ -40,6 +42,9 @@ const useGetAllPokemon = (limit: number) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
 
+  const [allPokemon, setAllPokemon] =
+    useRecoilState<AllPokemonConfig[]>(allPokemonState);
+
   const fetchAllPokemon = async (limit: number) => {
     setLoading(true);
     setError(null);
@@ -58,6 +63,7 @@ const useGetAllPokemon = (limit: number) => {
           })
         )
       );
+      setAllPokemon(responses);
       setData(responses);
     } catch (err) {
       setError((err as Error)?.message || "An unexpected error occurred");
@@ -67,8 +73,12 @@ const useGetAllPokemon = (limit: number) => {
   };
 
   useEffect(() => {
-    fetchAllPokemon(limit);
-  }, [limit]);
+    if (allPokemon?.length > 0) {
+      setData(allPokemon);
+    } else {
+      fetchAllPokemon(limit);
+    }
+  }, []);
 
   return {
     data,
