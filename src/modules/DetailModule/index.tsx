@@ -29,13 +29,6 @@ const DetailModule: React.FC<DetailModuleProps> = ({ data }) => {
     const { data: description, loading: descrptionLoading } = useGetDescription(data?.id as unknown as string);
     const { data: abilities, loading: abilitiesLoading } = useGetAbilities(data?.abilities)
 
-    const height =
-        data?.height as number >= 40 ? `${data?.height as number * 4}px` :
-            data?.height as number >= 30 ? `${data?.height as number * 6}px` :
-                data?.height as number >= 20 ? `${data?.height as number * 8}px` :
-                    data?.height as number >= 10 ? `${data?.height as number * 10}px` :
-                        data?.height as number >= 0 ? `${data?.height as number * 12}px` :
-                            '';
     const description1 = description?.flavor_text_entries?.[1]?.flavor_text.replace(/\f/g, '');
     const description2 = description?.flavor_text_entries?.[3]?.flavor_text.replace(/\f/g, '');
 
