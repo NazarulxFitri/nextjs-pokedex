@@ -83,7 +83,7 @@ const DetailModule: React.FC<DetailModuleProps> = ({ data }) => {
                     </Box>
                 </Grid2>
                 <Grid2 size={{ xs: 12, md: 5 }} sx={{ alignContent: "center", justifyItems: "center" }}>
-                    <Image style={{ display: "block", height: height, width: "auto", transform: "scaleX(-1)" }} src={data?.sprites?.other?.showdown?.front_default as string} alt={data?.name as string} width={200} height={200} />
+                    <Image style={{ display: "block", height: "auto", width: "auto", transform: "scaleX(-1)" }} src={data?.sprites?.other?.showdown?.front_default as string} alt={data?.name as string} width={200} height={200} />
                     <Box sx={{ display: "flex" }} gap={1} mt={2}>
                         <Typography variant="body1" sx={{ background: "#efefef", fontSize: "12px", px: 1, py: .2, borderRadius: 1 }}>{data?.height as number * 10} cm</Typography>
                         <Typography variant="body1" sx={{ background: "#efefef", fontSize: "12px", px: 1, py: .2, borderRadius: 1 }}>{data?.weight as number / 10} kg</Typography>
